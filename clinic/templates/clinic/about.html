@@ -1,0 +1,143 @@
+{% extends 'clinic/base.html' %}
+
+{% load static %}
+
+{% block title %}About Us | Healora Homoeo & Aesthetics{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <span>/</span>
+      <span style="color:rgba(255,255,255,0.8);">About</span>
+    </div>
+    <h1>Healora Homoeo & Aesthetics</h1>
+    <p>Holistic Healing. Natural Care. Aesthetic Confidence.</p>
+  </div>
+</div>
+
+<!-- About Intro -->
+<section style="background:var(--ivory);">
+  <div class="container">
+    <div class="about-intro">
+      <!-- <div class="about-image">🏥</div> -->
+      <div>
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="section-title">Healora Homoeo &<br><em>Aesthetics</em></h2>
+        <p style="color:var(--muted);margin-bottom:20px;line-height:1.9;">
+          At Healora Homeo & Aesthetics, we believe true wellness comes from treating the individual as a whole — understanding the root cause, not just the symptoms.
+        </p>
+        <p style="color:var(--muted);margin-bottom:32px;line-height:1.9;">
+          Our approach combines the principles of Homoeopathy, aesthetic care, and personalized wellness guidance to support your journey towards healthier skin, better health, and improved confidence.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature">
+            <span class="about-feature-icon">🌿</span>
+            <div>
+              <h4>Holistic Approach</h4>
+              <p>Treating the root cause, not just the symptoms</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="about-feature-icon">💆</span>
+            <div>
+              <h4>Personalized Care</h4>
+              <p>Individualized treatment plans for every patient</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="about-feature-icon">👩‍⚕️</span>
+            <div>
+              <h4>Expert Doctor</h4>
+              <p>Qualified Homoeopathic Physician & Aesthetic Doctor</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="about-feature-icon">💚</span>
+            <div>
+              <h4>Patient-First</h4>
+              <p>Compassionate and attentive care in every visit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Doctor Section -->
+<section style="background:#fff;">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Meet the Doctor</span>
+      <h2 class="section-title">About <em>Dr. Sumaiya Mohideen</em></h2>
+      <p class="section-subtitle">Homoeopathic Physician & Aesthetic Doctor</p>
+    </div>
+
+    <div class="about-intro" style="margin-top:40px;">
+      <div class="about-image">
+        <img src="{% static 'clinic/images/doctor.jpeg' %}" alt="Dr. Sumaiya Mohideen" style="width: 100%;border-radius: var(--radius-lg);object-fit: cover;">
+      </div>
+      <div>
+        <p style="color:var(--muted);margin-bottom:20px;line-height:1.9;">
+          Dr. Sumaiya Mohideen is a passionate healthcare professional dedicated to providing personalized and compassionate care through a holistic approach.
+        </p>
+        <p style="color:var(--muted);margin-bottom:20px;line-height:1.9;">
+          With a special interest in skin health, aesthetic wellness, and chronic health conditions, she focuses on understanding each patient's unique concerns, lifestyle, and health background before creating an individualized treatment plan.
+        </p>
+        <p style="color:var(--muted);margin-bottom:20px;line-height:1.9;">
+          Her approach combines medical knowledge with a patient-centered philosophy — aiming not only to improve symptoms but also to support long-term wellness and confidence.
+        </p>
+        <p style="color:var(--muted);line-height:1.9;">
+          At Healora, every patient receives attentive care, detailed consultation, and a treatment approach designed according to their individual needs.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<!-- <section class="testimonials-section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Patient Stories</span>
+      <h2 class="section-title">Words That<br><em>Mean the World</em></h2>
+    </div>
+    {% if testimonials %}
+    <div class="testimonials-grid">
+      {% for t in testimonials|slice:":3" %}
+      <article class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">{{ t.review }}</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">{{ t.name|first }}</div>
+          <div>
+            <span class="stars">★★★★★</span>
+            <div class="testimonial-name">{{ t.name }}</div>
+            <div class="testimonial-meta">{{ t.service_taken }}</div>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section> -->
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow">We'd Love to Meet You</span>
+    <h2>Book Your First<br><em>Consultation</em></h2>
+    <p>Your journey towards better health and confident skin begins at Healora Homeo & Aesthetics.</p>
+    <div class="cta-actions">
+      <a href="{% url 'book_appointment' %}" class="btn btn-white">Book Appointment</a>
+      <a href="{% url 'contact' %}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

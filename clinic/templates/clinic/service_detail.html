@@ -1,0 +1,89 @@
+{% extends 'clinic/base.html' %}
+
+{% block title %}{{ service.title }} | Healora Homoeo & Aesthetics{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <span>/</span>
+      <a href="{% url 'services' %}">Services</a>
+      <span>/</span>
+      <span style="color:rgba(255,255,255,0.8);">{{ service.title }}</span>
+    </div>
+    <h1>{{ service.title }}</h1>
+    <p>{{ service.short_description }}</p>
+  </div>
+</div>
+
+<section style="background:var(--ivory);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:start;">
+
+      <!-- Left: Detail -->
+      <div>
+        {% if service.image %}
+        <img src="{{ service.image.url }}" alt="{{ service.title }}"
+             style="width:100%;border-radius:var(--radius-lg);margin-bottom:40px;aspect-ratio:16/9;object-fit:cover;">
+        {% else %}
+        <div style="background:linear-gradient(135deg,var(--rose-light),var(--plum-mid));border-radius:var(--radius-lg);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:6rem;margin-bottom:40px;">
+          {{ service.icon }}
+        </div>
+        {% endif %}
+
+        <h2 style="font-size:1.8rem;font-style:italic;margin-bottom:20px;">About This Treatment</h2>
+        <div style="color:var(--muted);line-height:1.9;font-size:15px;">
+          {{ service.full_description|linebreaks }}
+        </div>
+
+        {% if related %}
+        <div style="margin-top:56px;">
+          <h3 style="font-size:1.4rem;font-style:italic;margin-bottom:28px;">Related Treatments</h3>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            {% for s in related %}
+            <a href="{% url 'service_detail' s.pk %}" class="service-card" style="text-decoration:none;">
+              <span class="service-icon">{{ s.icon }}</span>
+              <h3 style="font-size:1rem;">{{ s.title }}</h3>
+              <p style="font-size:13px;">{{ s.short_description|truncatewords:12 }}</p>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Right: Booking form -->
+      <div style="position:sticky;top:100px;">
+        <div class="form-container" style="padding:36px;">
+          <span class="eyebrow">Book This Treatment</span>
+          <h3 style="font-size:1.4rem;font-style:italic;margin-bottom:28px;">Schedule Your Session</h3>
+
+          <form method="post" action="{% url 'book_appointment' %}">
+            {% csrf_token %}
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              {% for field in appointment_form %}
+              <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <span style="color:#c0392b;font-size:12px;">{{ field.errors.0 }}</span>
+                {% endif %}
+              </div>
+              {% endfor %}
+              <button type="submit" class="btn btn-primary form-submit">Confirm Booking</button>
+            </div>
+          </form>
+
+          <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:16px;">
+            Or call us: <a href="tel:+919876543210" style="color:var(--rose);font-weight:500;">+91 98765 43210</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

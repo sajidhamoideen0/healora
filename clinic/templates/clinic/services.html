@@ -1,0 +1,145 @@
+{% extends 'clinic/base.html' %}
+
+{% block title %}Our Services | Healora Homoeo & Aesthetics{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home' %}">Home</a>
+      <span>/</span>
+      <span style="color:rgba(255,255,255,0.8);">Services</span>
+    </div>
+    <h1>Our Services</h1>
+    <p>Holistic healing and personalized care for your skin, hair, and overall wellness.</p>
+  </div>
+</div>
+
+<section style="background:var(--ivory);">
+  <div class="container">
+
+    {% if services %}
+    <div class="services-grid">
+      {% for service in services %}
+      <article class="service-card">
+        {% if service.image %}
+        <img src="{{ service.image.url }}" alt="{{ service.title }}" style="border-radius:12px;margin-bottom:20px;aspect-ratio:16/9;object-fit:cover;">
+        {% endif %}
+        <span class="service-icon">{{ service.icon }}</span>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.short_description }}</p>
+        <a href="{% url 'service_detail' service.pk %}" class="service-link">Learn more →</a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="services-grid">
+
+      <article class="service-card">
+        <span class="service-icon">🌿</span>
+        <h3>Homoeopathic Consultation</h3>
+        <p>Personalized homoeopathic care focusing on understanding the root cause of health concerns and supporting natural healing.</p>
+        <ul>
+          <li>Skin concerns</li>
+          <li>Allergies</li>
+          <li>Digestive issues</li>
+          <li>Hair concerns</li>
+          <li>Stress-related complaints</li>
+          <li>Hormonal imbalances</li>
+          <li>Recurrent infections</li>
+          <li>Chronic health conditions</li>
+          <li>Lifestyle-related concerns</li>
+        </ul>
+        <a href="{% url 'book_appointment' %}" class="service-link">Book now →</a>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">✨</span>
+        <h3>Skin & Aesthetic Care</h3>
+        <p>Enhancing your natural skin health through customized aesthetic solutions.</p>
+        <ul>
+          <li>Acne & acne marks</li>
+          <li>Pigmentation</li>
+          <li>Uneven skin tone</li>
+          <li>Dull skin</li>
+          <li>Anti-ageing concerns</li>
+          <li>Skin texture improvement</li>
+          <li>Basic skincare guidance</li>
+          <li>Personalized skincare routines</li>
+        </ul>
+        <a href="{% url 'book_appointment' %}" class="service-link">Book now →</a>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">💆</span>
+        <h3>Acne & Skin Wellness Program</h3>
+        <p>A structured approach combining consultation, lifestyle guidance, skincare recommendations, and suitable treatment plans to help manage acne and improve overall skin health.</p>
+        <a href="{% url 'book_appointment' %}" class="service-link">Book now →</a>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">🧴</span>
+        <h3>Hair & Scalp Care</h3>
+        <p>Personalized evaluation and guidance for:</p>
+        <ul>
+          <li>Hair fall</li>
+          <li>Scalp issues</li>
+          <li>Hair thinning</li>
+          <li>Hair health improvement</li>
+        </ul>
+        <a href="{% url 'book_appointment' %}" class="service-link">Book now →</a>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">🌱</span>
+        <h3>Preventive & Wellness Care</h3>
+        <p>Helping you build healthier habits through:</p>
+        <ul>
+          <li>Lifestyle guidance</li>
+          <li>Nutrition support</li>
+          <li>Skin health education</li>
+          <li>Long-term wellness planning</li>
+        </ul>
+        <a href="{% url 'book_appointment' %}" class="service-link">Book now →</a>
+      </article>
+
+    </div>
+    {% endif %}
+
+    <!-- Why Choose Us -->
+    <div class="section-header centered" style="margin-top:60px;">
+      <h2 class="section-title">Why Choose Healora?</h2>
+    </div>
+    <div style="text-align:center; font-size:1.1rem; line-height:2.5;">
+      ✔ Personalized consultations<br>
+      ✔ Root-cause focused approach<br>
+      ✔ Patient-friendly environment<br>
+      ✔ Evidence-informed skincare guidance<br>
+      ✔ Holistic approach towards health & beauty<br>
+      ✔ Individualized treatment plans
+    </div>
+
+    <!-- Our Vision -->
+    <div class="section-header centered" style="margin-top:60px;">
+      <h2 class="section-title">Our Vision</h2>
+      <p class="section-subtitle">To create a space where healthcare meets compassion — helping every patient feel healthier, more confident, and cared for.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow">Begin Your Wellness Journey</span>
+    <h2>Book Your Consultation<br><em>Today</em></h2>
+    <p>Your journey towards better health and confident skin begins at Healora Homeo & Aesthetics.</p>
+    <div class="cta-actions">
+      <a href="{% url 'book_appointment' %}" class="btn btn-white">Book a Consultation</a>
+      <a href="{% url 'contact' %}" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Ask a Question</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

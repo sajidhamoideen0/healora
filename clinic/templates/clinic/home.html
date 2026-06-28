@@ -1,0 +1,329 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+
+{% block title %}Healora Homoeo & Aesthetics | Holistic Healing. Natural Care. Aesthetic Confidence.{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Trusted by 500+ Patients
+        </div>
+
+        <h1>
+          Reveal the skin<br>
+          you were <em>meant</em><br>
+          to live in.
+        </h1>
+
+        <p class="hero-desc">
+          Science-backed dermatology. Personalised care. Transformative results.
+          We are here to help you look and feel your very best.
+        </p>
+
+        <div class="hero-actions">
+          <a href="{% url 'book_appointment' %}" class="btn btn-primary">Book a Consultation</a>
+          <a href="{% url 'services' %}" class="btn btn-outline">Explore Treatments</a>
+        </div>
+
+        <!-- <div class="hero-trust">
+          {% for stat in stats %}
+          <div class="trust-item">
+            <span class="trust-number">{{ stat.number }}</span>
+            <span class="trust-label">{{ stat.label }}</span>
+          </div>
+          {% endfor %}
+        </div> -->
+      </div>
+
+     <div class="hero-visual">
+        <div class="hero-image-wrap">
+          <img src="{% static 'clinic/images/doctor.jpeg' %}" alt="Dr. Sumaiya Mohideen" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+        </div>
+        <div class="hero-card hero-card-1">
+          <div class="card-icon">✅</div>
+          <div class="card-text">
+            <span>Registered Homoeopathic Physician</span>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">What We Offer</span>
+      <h2 class="section-title">Our Services</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card">
+        <span class="service-icon">🌿</span>
+        <h3>Homoeopathic Consultation</h3>
+        <p>Personalized homoeopathic care focusing on understanding the root cause of health concerns and supporting natural healing.</p>
+        <ul>
+          <li>Skin concerns</li>
+          <li>Allergies</li>
+          <li>Digestive issues</li>
+          <li>Hair concerns</li>
+          <li>Stress-related complaints</li>
+          <li>Hormonal imbalances</li>
+          <li>Recurrent infections</li>
+          <li>Chronic health conditions</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">✨</span>
+        <h3>Skin & Aesthetic Care</h3>
+        <p>Enhancing your natural skin health through customized aesthetic solutions.</p>
+        <ul>
+          <li>Acne & acne marks</li>
+          <li>Pigmentation</li>
+          <li>Uneven skin tone</li>
+          <li>Dull skin</li>
+          <li>Anti-ageing concerns</li>
+          <li>Skin texture improvement</li>
+          <li>Personalized skincare routines</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">💆</span>
+        <h3>Acne & Skin Wellness Program</h3>
+        <p>A structured approach combining consultation, lifestyle guidance, skincare recommendations, and suitable treatment plans to help manage acne and improve overall skin health.</p>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">💇</span>
+        <h3>Hair & Scalp Care</h3>
+        <p>Personalized evaluation and guidance for:</p>
+        <ul>
+          <li>Hair fall</li>
+          <li>Scalp issues</li>
+          <li>Hair thinning</li>
+          <li>Hair health improvement</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <span class="service-icon">🌱</span>
+        <h3>Preventive & Wellness Care</h3>
+        <p>Helping you build healthier habits through:</p>
+        <ul>
+          <li>Lifestyle guidance</li>
+          <li>Nutrition support</li>
+          <li>Skin health education</li>
+          <li>Long-term wellness planning</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="section-header centered" style="margin-top:60px;">
+      <h2 class="section-title">Why Choose Healora?</h2>
+    </div>
+    <div style="text-align:center; font-size:1.1rem; line-height:2.2;">
+      ✔ Personalized consultations<br>
+      ✔ Root-cause focused approach<br>
+      ✔ Patient-friendly environment<br>
+      ✔ Evidence-informed skincare guidance<br>
+      ✔ Holistic approach towards health & beauty<br>
+      ✔ Individualized treatment plans
+    </div>
+
+    <!-- Our Vision -->
+    <div class="section-header centered" style="margin-top:60px;">
+      <h2 class="section-title">Our Vision</h2>
+      <p class="section-subtitle">To create a space where healthcare meets compassion — helping every patient feel healthier, more confident, and cared for.</p>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center; margin-top:40px;">
+      <h3>Book Your Consultation Today</h3>
+      <p>Your journey towards better health and confident skin begins at Healora Homeo & Aesthetics.</p>
+      <a href="{% url 'book_appointment' %}" class="btn btn-primary" style="margin-top:16px;">Book Now</a>
+    </div>
+
+  </div>
+</section>
+<!-- DOCTORS -->
+<section class="doctors-section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Our Doctor</span>
+      <h2 class="section-title">Meet the Expert<br><em>Behind Your Glow</em></h2>
+      <p class="section-subtitle">Our board-certified aesthetic physician brings 8+ combined experience to every consultation.</p>
+    </div>
+
+    {% if doctors %}
+    <div class="doctors-grid">
+      {% for doctor in doctors|slice:":1" %}
+      <article class="doctor-card">
+        <div class="doctor-photo">
+          {% if doctor.photo %}
+            <img src="{{ doctor.photo.url }}" alt="Dr. {{ doctor.name }}">
+          {% else %}
+            👩‍⚕️
+          {% endif %}
+        </div>
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. {{ doctor.name }}</h3>
+          <div class="doctor-title">{{ doctor.designation }}</div>
+          <p class="doctor-bio">{{ doctor.bio|truncatewords:25 }}</p>
+          <span class="doctor-exp">{{ doctor.experience_years }}+ years experience</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Placeholder doctors -->
+    <div class="doctors-grid">
+      {% for i in "1" %}
+      <article class="doctor-card">
+        <div class="doctor-photo">
+          <img src="{% static 'clinic/images/doctor.jpeg' %}" alt="Dr. Sumaiya Mohideen" style="width:100%;height: 100%;object-fit: cover;border-radius: 50%;">
+        </div>
+        <div class="doctor-info">
+          <h3 class="doctor-name">Dr. Sumaiya Mohideen</h3>
+          <div class="doctor-title">Homoeopathic Physician & Aesthetic Doctor</div>
+          <!-- <p class="doctor-bio">Over 8 years of experience Dr. Sumaiya Mohideen is a passionate healthcare professional dedicated to providing personalized and compassionate care through a holistic approach.</p> -->
+          <span class="doctor-exp">8+ years experience </span>>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<!-- <section class="testimonials-section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Patient Stories</span>
+      <h2 class="section-title">Loved by Thousands,<br><em>Trusted by All</em></h2>
+      <p class="section-subtitle">Real results. Real stories. Hear what our patients have to say.</p>
+    </div>
+
+    {% if testimonials %}
+    <div class="testimonials-grid">
+      {% for t in testimonials %}
+      <article class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">{{ t.review }}</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">{{ t.name|first }}</div>
+          <div>
+            <div class="stars">{% for i in "12345" %}{% if forloop.counter <= t.rating %}★{% else %}☆{% endif %}{% endfor %}</div>
+            <div class="testimonial-name">{{ t.name }}</div>
+            <div class="testimonial-meta">{{ t.service_taken }}{% if t.location %} · {{ t.location }}{% endif %}</div>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %} -->
+    <!-- Placeholder testimonials -->
+    <!-- <div class="testimonials-grid">
+      {% for i in "123456" %}
+      <article class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          {% if forloop.counter == 1 %}I struggled with acne for years. After just 3 sessions at The Glow Clinic, my skin is completely transformed. The doctors truly listen and care.
+          {% elif forloop.counter == 2 %}The laser hair removal was painless and incredibly effective. I'm so glad I chose this clinic — professional, hygienic and genuinely caring staff.
+          {% elif forloop.counter == 3 %}Dr. Priya's expertise with anti-aging treatments is unmatched. Natural-looking results that have taken years off my appearance. Absolutely love it!
+          {% elif forloop.counter == 4 %}My hair loss had been a source of anxiety for two years. The PRP therapy here has genuinely changed my life. I finally have my confidence back.
+          {% elif forloop.counter == 5 %}The HydraFacial left my skin glowing for weeks. The ambience is so calm and luxurious — feels like a high-end spa with medical-grade results.
+          {% else %}I've tried so many clinics but none matched the personalised attention I received here. They don't just treat symptoms; they understand the root cause.{% endif %}
+        </p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">
+            {% if forloop.counter == 1 %}P{% elif forloop.counter == 2 %}R{% elif forloop.counter == 3 %}S{% elif forloop.counter == 4 %}A{% elif forloop.counter == 5 %}M{% else %}K{% endif %}
+          </div>
+          <div>
+            <span class="stars">★★★★★</span>
+            <div class="testimonial-name">
+              {% if forloop.counter == 1 %}Priya M.{% elif forloop.counter == 2 %}Rohit K.{% elif forloop.counter == 3 %}Sunita J.{% elif forloop.counter == 4 %}Arjun V.{% elif forloop.counter == 5 %}Meena T.{% else %}Kiran D.{% endif %}
+            </div>
+            <div class="testimonial-meta">
+              {% if forloop.counter == 1 %}Acne Treatment · Bangalore{% elif forloop.counter == 2 %}Laser Hair Removal · Mumbai{% elif forloop.counter == 3 %}Botox & Fillers · Delhi{% elif forloop.counter == 4 %}PRP Hair Therapy · Bangalore{% elif forloop.counter == 5 %}HydraFacial · Chennai{% else %}General Consultation · Hyderabad{% endif %}
+            </div>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section> -->
+
+<!-- FAQ -->
+<!-- <section class="faq-section">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-title">Everything You<br><em>Want to Know</em></h2>
+    </div>
+
+    <div class="faq-list" role="list">
+      {% if faqs %}
+        {% for faq in faqs %}
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            {{ faq.question }}
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">{{ faq.answer }}</div>
+        </div>
+        {% endfor %}
+      {% else %}
+        {% for item in "123456" %}
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false">
+            {% if forloop.counter == 1 %}How do I know which treatment is right for me?
+            {% elif forloop.counter == 2 %}Are the treatments safe for all skin types?
+            {% elif forloop.counter == 3 %}How many sessions will I need?
+            {% elif forloop.counter == 4 %}Is there any downtime after treatments?
+            {% elif forloop.counter == 5 %}How do I book an appointment?
+            {% else %}Do you offer payment plans?{% endif %}
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            {% if forloop.counter == 1 %}We recommend starting with a thorough consultation. Our dermatologists assess your skin type, concerns and medical history to create a fully personalised treatment plan that delivers safe, effective results.
+            {% elif forloop.counter == 2 %}Yes. We use clinically validated, FDA-approved equipment and products suitable for all Fitzpatrick skin types, including darker Indian skin tones. Your safety is our highest priority.
+            {% elif forloop.counter == 3 %}The number of sessions varies depending on your condition and treatment. During your consultation, your doctor will outline a clear treatment plan with realistic timelines and expected outcomes.
+            {% elif forloop.counter == 4 %}Many of our treatments have minimal to no downtime. For procedures like laser treatments or chemical peels, you may experience mild redness for 24–48 hours. We will guide you on aftercare for every treatment.
+            {% elif forloop.counter == 5 %}You can book online via our website, call us at +91 98765 43210, or walk into our clinic. We offer flexible appointment slots including early mornings and Saturdays.
+            {% else %}Yes, we offer convenient EMI options through major credit cards and select financing partners. Speak to our front desk team at the time of your consultation to learn more.{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section> -->
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow">Begin Your Journey</span>
+    <h2>Your Best Skin<br>Starts Here</h2>
+    <p>Book a consultation today and take the first step towards confident, healthy skin.</p>
+    <div class="cta-actions">
+      <a href="{% url 'book_appointment' %}" class="btn btn-white">Book Appointment</a>
+      <a href="tel:+919876543210" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">📞 Call Now</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
