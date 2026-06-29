@@ -10,14 +10,17 @@ const navLinks = document.getElementById('navLinks');
 if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('open');
+    document.body.classList.toggle('nav-open');
     const isOpen = navLinks.classList.contains('open');
     hamburger.setAttribute('aria-expanded', isOpen);
   });
   // Close on link click
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      document.body.classList.remove('nav-open');
   });
-}
+});
 
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
