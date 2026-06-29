@@ -1,5 +1,5 @@
 /* =============================================
-   THE GLOW CLINIC — Design System
+   HEALORA HOMEO & AESTHETICS — Design System
    Palette: Blush rose + deep plum + warm ivory
    ============================================= */
 
@@ -614,7 +614,7 @@ section { padding: 96px 0; }
 }
 
 /* === TESTIMONIALS === */
-.testimonials-section {
+/* .testimonials-section {
   background: var(--white);
 }
 
@@ -692,10 +692,10 @@ section { padding: 96px 0; }
   letter-spacing: 2px;
   display: block;
   margin-bottom: 4px;
-}
+} */
 
 /* === FAQ === */
-.faq-section {
+/* .faq-section {
   background: var(--ivory);
 }
 
@@ -753,7 +753,7 @@ section { padding: 96px 0; }
   line-height: 1.8;
 }
 
-.faq-item.open .faq-answer { display: block; }
+.faq-item.open .faq-answer { display: block; } */
 
 /* === APPOINTMENT CTA === */
 .cta-section {
@@ -1215,7 +1215,7 @@ footer {
     align-items: flex-start;
     padding: 40px 32px;
     gap: 0;
-    z-index: 999;
+    z-index: 9999;
   }
   .nav-links.open { display: flex; }
   .nav-links a {
