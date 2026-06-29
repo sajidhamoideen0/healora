@@ -21,6 +21,7 @@ if (hamburger && navLinks) {
       document.body.classList.remove('nav-open');
   });
 });
+}
 
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
