@@ -1219,7 +1219,7 @@ footer {
     align-items: flex-start;
     padding: 40px 32px;
     gap: 0;
-    z-index: 9999;
+    z-index: 99999;
   }
   .nav-links.open { display: flex; }
   .nav-links a {
@@ -1230,6 +1230,18 @@ footer {
   }
   .nav-links .btn { margin-top: 24px; width: 100%; justify-content: center; }
   .hamburger { display: flex; }
+
+  .hero {
+    z-index: 1;
+    position: relative;
+  }
+  .hero-tag{
+    z-index: 1;
+  }
+  .btn.btn-primary {
+    z-index: 1;
+    position: relative;
+  }
 }
 
 /* === RESPONSIVE === */
