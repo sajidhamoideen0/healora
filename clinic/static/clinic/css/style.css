@@ -262,6 +262,8 @@ section { padding: 96px 0; }
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  z-index: 1;
+  position: relative;
 }
 
 .hero-tag {
@@ -278,6 +280,8 @@ section { padding: 96px 0; }
   color: var(--rose);
   margin-bottom: 28px;
   font-weight: 500;
+  z-index: 1;
+  position: relative;
 }
 
 .hero-tag-dot {
