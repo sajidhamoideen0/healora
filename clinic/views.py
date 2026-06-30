@@ -17,7 +17,20 @@ def home(request):
     if request.method == 'POST' and 'appointment_submit' in request.POST:
         appointment_form = AppointmentForm(request.POST)
         if appointment_form.is_valid():
-            appointment_form.save()
+            appointment = appointment_form.save()
+
+            # Notify clinic of new appointment
+            try:
+                send_mail(
+                    subject='New Appointment Booked - Healora',
+                    message=f'New appointment request:\n\nName: {appointment.name}\nEmail: {appointment.email}\nPhone: {getattr(appointment, "phone", "N/A")}\nPreferred Date: {appointment.preferred_date}\nService: {getattr(appointment, "service", "N/A")}',
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[settings.EMAIL_HOST_USER],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass
+
             messages.success(request, 'Your appointment request has been received! We will contact you shortly.')
             return redirect('home')
 
@@ -126,6 +139,18 @@ def book_appointment(request):
                 from_email=None,
                 recipient_list=[appointment.email],
             )
+
+            # Notify clinic of new appointment
+            try:
+                send_mail(
+                    subject='New Appointment Booked - Healora',
+                    message=f'New appointment request:\n\nName: {appointment.name}\nEmail: {appointment.email}\nPhone: {getattr(appointment, "phone", "N/A")}\nPreferred Date: {appointment.preferred_date}\nService: {getattr(appointment, "service", "N/A")}',
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[settings.EMAIL_HOST_USER],
+                    fail_silently=True,
+                )
+            except Exception:
+                pass
             
             messages.success(request, f'Appointment booked for {appointment.preferred_date}! We will confirm via email.')
             return redirect('book_appointment')
