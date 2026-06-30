@@ -25,7 +25,7 @@ def home(request):
                     subject='New Appointment Booked - Healora',
                     message=f'New appointment request:\n\nName: {appointment.name}\nEmail: {appointment.email}\nPhone: {getattr(appointment, "phone", "N/A")}\nPreferred Date: {appointment.preferred_date}\nService: {getattr(appointment, "service", "N/A")}',
                     from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[settings.EMAIL_HOST_USER],
+                    recipient_list=['healorhomeoclinic@gmail.com'],
                     fail_silently=True,
                 )
             except Exception:
@@ -112,7 +112,7 @@ def contact(request):
                     subject=f"New Contact: {contact_msg.subject}",
                     message=f"From: {contact_msg.name} ({contact_msg.email})\nPhone: {contact_msg.phone}\n\n{contact_msg.message}",
                     from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[settings.EMAIL_HOST_USER],
+                    recipient_list=['healorhomeoclinic@gmail.com'],
                     fail_silently=True,
                 )
             except Exception:
@@ -146,7 +146,7 @@ def book_appointment(request):
                     subject='New Appointment Booked - Healora',
                     message=f'New appointment request:\n\nName: {appointment.name}\nEmail: {appointment.email}\nPhone: {getattr(appointment, "phone", "N/A")}\nPreferred Date: {appointment.preferred_date}\nService: {getattr(appointment, "service", "N/A")}',
                     from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[settings.EMAIL_HOST_USER],
+                    recipient_list=['healorahomeoclinic@gmail.com'],
                     fail_silently=True,
                 )
             except Exception:
