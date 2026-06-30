@@ -18,6 +18,18 @@ def home(request):
         appointment_form = AppointmentForm(request.POST)
         if appointment_form.is_valid():
             appointment = appointment_form.save()
+            
+            # Send confirmation email to customer
+            try:
+                send_mail(
+                    subject='Appointment confirmed - Healora Homoeo Clinic',
+                    message=f'Dear {appointment.name},\n\nYour appointment has been booked for {appointment.preferred_date}.\n\nThank you,\nHealora Homoeo Clinic',
+                    from_email=None,
+                    recipient_list=[appointment.email],
+                    fail_silently=True
+                )
+            except Exception:
+                pass
 
             # Notify clinic of new appointment
             try:
